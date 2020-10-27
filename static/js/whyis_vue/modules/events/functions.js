@@ -257,8 +257,9 @@ const controller = {
   },
 
   checkIfEditable(args){
-    if(this.checkIfRestValidate()){
-      /** TODO: Filter chartlistings and check if user/admin */
+    if(!this.authUser){
+      return; 
+    } else {
       if(args){
         const user = !this.authUser.user ? null : this.authUser.user
         const uri = args.split("/");
@@ -268,6 +269,9 @@ const controller = {
             this.$emit("allowChartEdit", true)
           }
         })
+        return;
+      } else {
+        return this.authUser && this.authUser.user == 'admin' ? this.$emit("allowChartEdit", true) : null
       }
     }
   },
@@ -300,7 +304,8 @@ const controller = {
   
   async getVizOfTheDayStatus(){
     const status = await JSON.parse(localStorage.getItem('vodd'));
-    return status
+    // return status
+    return status | false
   }
 }
 
