@@ -2,7 +2,8 @@ import Vue from 'vue'
 import { EventServices } from '../../../../modules'
 import splitPane from 'vue-splitpane'
 import VJsoneditor from 'v-jsoneditor'
-import { getDefaultChart, loadChart, saveChart, buildSparqlSpec } from 'utilities/vega-chart'
+import { getDefaultChart, loadChart, saveChart, buildSparqlSpec, chartPrefix } from 'utilities/vega-chart'
+import { lodPrefix } from 'utilities/nanopub'
 import { getCurrentView } from 'utilities/views'
 import { querySparql } from 'utilities/sparql'
 
@@ -167,7 +168,10 @@ export default Vue.component('vega-editor', {
           this.chart.query = recievedChart.backup.query
           this.chart.title = recievedChart.backup.title
           this.chart.description = recievedChart.backup.description
+          // this.chart.uri = `http://localhost:8000/${chartPrefix}/${recievedChart.name}`
+          this.chart.uri = recievedChart.backup.uri
           this.restoredChartId = recievedChart.name
+          console.log(this.chart)
         }
       } else {
         EventServices.$emit('snacks', {status:true, message: 'No Browser Support!!!'});
