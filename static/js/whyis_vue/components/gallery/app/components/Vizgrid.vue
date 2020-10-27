@@ -117,7 +117,7 @@
                 this.loading = true
                 const vvodd = await EventServices.getVizOfTheDayStatus()
                 const result = await EventServices.fetchAllCharts()
-                if(result.length > 0 && vvodd.status == true){
+                if(!result) { } else if(result.length > 0 && vvodd.status == true){
                     let viz = result[0];
                     if("backup" in viz){
                         this.loading = false
