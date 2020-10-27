@@ -28,12 +28,11 @@
           </div>
           <div v-else-if="dialog.query" style="margin-right: .8rem !important;">
             <div class="viz-intro-query">
-              <yasqe v-model="dialog.query" :showBtns='true'></yasqe>
+              <yasqe v-model="dialog.chart" :showBtns='true'></yasqe>
             </div>
             <span class="md-subheading"> {{ dialog.message }}</span>
           </div>
           <div v-else> <span class="md-subheading">{{ dialog.message }}</span> </div>
-          
           <div class="utility-margin-big viz-2-col" v-if="dialog.share || dialog.delete || dialog.query || dialog.diag">
             <div class="utility-margin-top"></div>
             <div class="utility-align--right utility-margin-top" v-if="dialog.share || dialog.query">
@@ -153,7 +152,6 @@
       onCancel() {
         this.active = !this.active
         EventServices.$emit('close-filter-box', this.active)
-        
       },
       cancelDel(){
         this.active = !this.active
@@ -166,7 +164,7 @@
           EventServices.deleteAChart(this.dialog.chart)
         } else if(this.dialog.reset) {
           EventServices.resetChart()
-        } 
+        }
         this.dialog = { status: false}
         return EventServices.$emit('close-filter-box', this.active)
       },
