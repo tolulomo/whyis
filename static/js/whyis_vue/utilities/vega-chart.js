@@ -203,4 +203,4 @@ function buildSparqlSpec (baseSpec, sparqlResults) {
   return spec
 }
 
-export { getDefaultChart, loadChart, saveChart, getCharts, buildSparqlSpec}
+export { getDefaultChart, loadChart, saveChart, getCharts, buildSparqlSpec, chartPrefix}
