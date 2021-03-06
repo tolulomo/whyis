@@ -17,7 +17,7 @@ service { jetty8:
 }
 
 # Install and uninstall packages
-package { ["apache2-dev", "unzip", "zip", "default-jdk", "build-essential","automake", "jetty9", "subversion", "git", "libblas3", "libblas-dev", "celeryd", "redis-server", "apache2", "libffi-dev", "libssl-dev", "maven", "libdb5.3-dev", "python3.7-dev"]:
+package { ["apache2-dev", "unzip", "zip", "default-jdk", "build-essential","automake", "jetty9", "subversion", "git", "libblas3", "libblas-dev","libapache2-mod-wsgi-py3", "celeryd", "redis-server", "apache2", "libffi-dev", "libssl-dev", "maven", "libdb5.3-dev", "python3.7-dev"]:
   ensure => "installed"
 } ->
 package { "jetty8":
